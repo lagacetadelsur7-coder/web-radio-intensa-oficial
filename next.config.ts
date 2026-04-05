@@ -1,14 +1,13 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
-    // Esto le dice a Vercel: "Ignorá los errores de ESLint al armar la radio"
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // Esto le dice: "Ignorá los errores de tipos al armar"
     ignoreBuildErrors: true,
   },
+  // Esta línea es el secreto para que pase los 33 segundos:
+  images: { unoptimized: true }
 };
 
 export default nextConfig;
