@@ -59,7 +59,7 @@ export function LiveTopic() {
         </span>
       </div>
       <p className="text-lg md:text-xl text-primary/80 mt-4 max-w-3xl border-b border-primary/20 pb-4 animate-in fade-in slide-in-from-bottom-2">
-        "{topic}"
+        &quot;{topic}&quot;
       </p>
     </div>
   );

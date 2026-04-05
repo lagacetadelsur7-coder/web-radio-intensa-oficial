@@ -55,7 +55,7 @@ export async function GET(req: Request) {
     const nick = BOT_NAMES[Math.floor(Math.random() * BOT_NAMES.length)];
     const user_level = BOT_LEVELS[Math.floor(Math.random() * BOT_LEVELS.length)];
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("chat_messages")
       .insert([
         { nick, content, user_level, status: "approved" }
@@ -73,9 +73,10 @@ export async function GET(req: Request) {
       content
     }, { status: 200 });
 
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { error: "Internal Server Error", details: err.message },
+      { error: "Internal Server Error", details: errorMessage },
       { status: 500 }
     );
   }

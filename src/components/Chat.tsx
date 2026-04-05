@@ -100,7 +100,7 @@ export function Chat() {
       } else {
         setContent(""); // Clear only content
       }
-    } catch (err) {
+    } catch {
       setErrorMsg("Error de conexión al enviar el mensaje.");
     } finally {
       setIsSending(false);

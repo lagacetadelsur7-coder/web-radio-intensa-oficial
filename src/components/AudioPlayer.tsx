@@ -47,6 +47,7 @@ export function AudioPlayer({
       currentAudio.pause();
       currentAudio.src = "";
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [streamUrl]);
 
   useEffect(() => {

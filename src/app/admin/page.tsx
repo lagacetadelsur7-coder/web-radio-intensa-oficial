@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import { Session } from "@supabase/supabase-js";
 
 export default function AdminDashboard() {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [topic, setTopic] = useState("");
   const [isLive, setIsLive] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -18,10 +19,11 @@ export default function AdminDashboard() {
       setSession(session);
       if (session) fetchStatus();
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase]);
 
   const fetchStatus = async () => {
-    const { data, error } = await supabase.from("radio_status").select("*").limit(1).single();
+    const { data } = await supabase.from("radio_status").select("*").limit(1).single();
     if (data) {
       setTopic(data.current_topic);
       setIsLive(data.is_live);

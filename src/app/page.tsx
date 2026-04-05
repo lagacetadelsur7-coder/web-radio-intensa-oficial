@@ -1,5 +1,6 @@
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { Chat } from "@/components/Chat";
+import { LiveTopic } from "@/components/LiveTopic";
 
 export default function Home() {
   return (
